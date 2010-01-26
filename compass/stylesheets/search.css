@@ -75,3 +75,8 @@ div.searchwrap #search_button { display: block; background: url('/static/images/
 div.searchwrap #search_button:hover { text-decoration: underline; }
 div.searchwrap #search_button:hover { background: #4e9946; color: white; text-decoration: none!important; }
 div.searchwrap select { display: none; }
+
+body.search span.quote, body.search span.title { padding: 0 1em!important; }
+
+.mediabase_domain { background: yellow; -webkit-border-radius-bottomleft: 4px; -webkit-border-radius-topleft: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-topleft: 4px; -webkit-border-radius-topright: 4px; -webkit-border-radius-bottomright: 4px; -moz-border-radius-topright: 4px; -moz-border-radius-bottomright: 4px; }
+.mediabase_domain em { font-weight: bold; font-style: normal; text-transform: uppercase; }
