@@ -1,0 +1,215 @@
+//**
+//  Susy: Elastic-Fluid grids without all the math
+//  by Eric Meyer and OddBird Collective
+//  Site: www.oddbird.net/susy/
+//**
+
+//** 
+  GRID
+  un-comment and override these values as needed for your grid layout 
+  (defaults are shown)
+// !grid_unit = "em"
+// !total_cols = 12
+// !col_width = 4
+// !gutter_width = 1
+// !side_gutter_width = !gutter_width
+
+
+//** 
+  OMEGA_FLOAT
+  By default, +omega elements are floated right.
+  You can override that globally here:
+// !omega_float = "right"
+
+
+//**
+  HACKS
+  Are you using hacks or conditional comments? Susy makes both possible.
+  Leave this as 'true' to use hacks, set it as false for conditional comments.
+  Conditional comments will require overrides for +omega, +inline-block and
+  several other mixins.
+  !hacks = true
+
+//** 
+  FONT-SIZE
+  un-comment and override these values as needed (defaults are shown)
+  - you set the font and line heights in pixels.
+  - Susy will do the math and give you !base_font_size and !base_line_height 
+    variables, set flexibly against the common browser default of 16px
+// !base_font_size_px = 16
+// !base_line_height_px = 24
+
+// SUSY
+//  (don't move this @import above the GRID and FONT-SIZE overrides)
+@import susy/susy.sass
+
+// COLORS
+// set any colors you will need later
+!font_color = #444
+!quiet_color = !font_color + #333
+!loud_color = !font_color - #222
+!header_color = !font_color - #111 	
+!link_color = #099 	
+!visited_color = #909
+!hover_color = !link_color - #333
+!focus_color = !hover_color
+!active_color = !hover_color
+
+// FONTS
+// Give yourself some font stacks to work with
+=sans-family
+  :font-family Helvetica, Arial, sans-serif
+
+=serif-family
+  :font-family Baskerville, Palatino, serif 
+
+// Remember to add default styles to everything!
+
+body
+  +sans-family
+  :color= !font_color
+
+/* @group links */
+
+\:focus
+  :outline= 1px "dotted" !quiet_color
+  :color= !hover_color
+
+a
+  &:link
+    :color= !link_color
+  &:visited
+    :color= !visited_color
+  &:focus, &:hover, &:active
+    :color= !hover_color
+    :text-decoration none
+
+/* @end */
+
+
+/* @group headers */
+
+h1, h2, h3, h4, h5, h6
+  :color= !header_color
+  :font-weight bold
+
+h1, h2, h3
+  +serif-family
+  
+h1
+  :font-size= !base_line_height
+
+/* @end */
+
+
+/* @group forms */
+
+form *:focus
+  :outline none
+
+fieldset
+  :margin= !base_line_height 0
+
+legend
+  :font-weight bold
+  :font-variant small-caps
+
+label
+  :display block
+  :margin-top= !base_line_height
+
+legend + label
+  :margin-top 0
+
+textarea, input[type="text"]
+  :color= !quiet_color
+  +box-sizing("border-box")
+  :width 100%
+
+/* @end */
+
+
+/* @group tables */
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table
+  :width 100%
+  :border= 1/16 + "em solid" !quiet_color + #333
+    :left none
+    :right none
+  :padding= 7/16 + "em 0"
+  :margin= 8/16 + "em 0"
+
+tbody
+  :color= !quiet_color
+
+th
+  :font-weight bold
+
+/* @end */
+
+
+/* @group block tags */
+
+p
+  :margin= !base_line_height 0
+
+=list-default(!ol = false)
+  @if !ol
+    :list-style decimal
+    :margin 0 1.5em 1.5em 1.5em
+  @else
+    :list-style disc
+    :margin 0 1.5em 1.5em 1.5em
+
+=no-style-list
+  +no-bullets
+  :margin 0
+  :padding 0
+
+ol
+  +list-default("ol")
+
+ul
+  +list-default
+
+blockquote
+  :margin= !base_line_height
+  :color= !quiet_color
+
+/* @end */
+
+
+/* @group inline tags */
+
+cite
+  :font-style italic
+  :color= !quiet_color
+
+em
+  :font-style italic
+
+strong
+  :font-weight bold
+
+ins
+  :text-decoration underline
+
+del
+  :text-decoration line-through
+
+q
+  :font-style italic
+  em
+    :font-style normal
+
+/* @end */
+
+
+/* @group replaced tags */
+
+img
+  :vertical-align bottom
+
+/* @end */
