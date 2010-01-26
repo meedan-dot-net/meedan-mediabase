@@ -1,0 +1,27 @@
+=universal_two_column_layout(!container_width = "950px")
+  #container, #content
+    +container
+    :width= !container_width
+    :padding-top 3em
+    :min-width= !container_width
+  #primary
+    +columns(16,24)
+    :clear none
+    +omega
+    :border-top= 1px solid !med_grey
+  #secondary
+    +columns(7,24)
+    :clear none
+    +alpha
+    :float left
+    :margin 0
+    :border-top= 2px solid !dark_grey
+    :text-align center
+    .logo
+      :padding-top 1em
+      :text-align center
+      :border-bottom= 3px double !med_grey
+      :padding-bottom 1em
+      :float left
+      :text-align center
+      :width 100%

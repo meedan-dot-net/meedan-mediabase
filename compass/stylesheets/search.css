@@ -1,0 +1,77 @@
+
+a#circle { -webkit-border-radius-bottomleft: 10px; -webkit-border-radius-topleft: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-topleft: 10px; -webkit-border-radius-topright: 10px; -webkit-border-radius-bottomright: 10px; -moz-border-radius-topright: 10px; -moz-border-radius-bottomright: 10px; background-color: red; display: block; height: 10px; width: 10px; position: absolute; top: 10; left: 10; }
+
+a#circle:hover { -webkit-border-radius-bottomleft: 10px; -webkit-border-radius-topleft: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-topleft: 10px; -webkit-border-radius-topright: 10px; -webkit-border-radius-bottomright: 10px; -moz-border-radius-topright: 10px; -moz-border-radius-bottomright: 10px; background-color: blue; display: block; height: 10px; width: 10px; position: absolute; top: 10; left: 10; width: 100; }
+
+/* implement tabs with */
+
+@import url(compass/css3.css);
+@font-face { font-family: "CA BND Web Bold"; src: url("/static/fonts/CABNDWebBold.otf") format("opentype"); }
+
+
+a#circle { -webkit-border-radius-bottomleft: 10px; -webkit-border-radius-topleft: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-topleft: 10px; -webkit-border-radius-topright: 10px; -webkit-border-radius-bottomright: 10px; -moz-border-radius-topright: 10px; -moz-border-radius-bottomright: 10px; background-color: red; display: block; height: 10px; width: 10px; position: absolute; top: 10; left: 10; }
+
+a#circle:hover { -webkit-border-radius-bottomleft: 10px; -webkit-border-radius-topleft: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-topleft: 10px; -webkit-border-radius-topright: 10px; -webkit-border-radius-bottomright: 10px; -moz-border-radius-topright: 10px; -moz-border-radius-bottomright: 10px; background-color: blue; display: block; height: 10px; width: 10px; position: absolute; top: 10; left: 10; width: 100; }
+
+/* implement tabs with */
+
+a { text-decoration: none; color: #333; }
+a:hover { text-decoration: underline; }
+
+body.search #primary { overflow: hidden; display: inline-block; text-align: left; margin-left: auto; margin-right: auto; width: 97em; max-width: 100%; }
+body.search #primary { display: block; }
+
+span.event { background: #cfffb8; color: #36661f; }
+
+span.comment { background: #fcb95d; color: #965300; }
+
+span.link { background: #c3ffff; color: #2a6666; }
+
+ul.event { border-top: 1px solid #699952; }
+
+ul.comment { border-top: 1px solid #965300; }
+
+ul.link { border-top: 1px solid #5d9999; }
+
+h3 { clear: both; float: left; width: 100%; text-align: center; }
+
+ul.result { width: 100%; display: inline; float: left; margin-right: 1.053%; overflow: hidden; display: inline-block; }
+ul.result { display: block; }
+ul.result .primary { font-size: 1.2em; }
+ul.result .primary span.en { line-height: 1.9; text-align: left; }
+ul.result .primary span.ar { line-height: 0.9; direction: rtl; text-align: right; }
+ul.result .secondary { font-size: 1.1em; }
+ul.result li.primary { padding-top: 1em; padding-bottom: 1em; width: 100%; display: inline; float: left; margin-right: 1.053%; background: #fff; }
+ul.result li.primary span.quote, ul.result li.primary span.title { width: 45.263%; display: inline; float: left; margin-right: 1.053%; }
+ul.result li.primary span.en { text-align: left; float: left; }
+ul.result li.primary span.ar { float: right; margin-right: 0; }
+ul.result li.primary span.ar .more_link { font-size: 0.8em; text-decoration: underline; }
+ul.result li.secondary { width: 100%; display: inline; float: left; margin-right: 1.053%; clear: both; background: url('/static/images/bg-striped.gif'); }
+ul.result li.secondary span { padding: 0 1em; line-height: 2em; float: left; }
+ul.result li.secondary span a.user_image img { display: none; }
+ul.result li.secondary span img { margin: 5px; float: left; height: 20px; }
+ul.result li.secondary span.timestamp { color: #000; }
+ul.result li.secondary span.en { text-align: left; float: left; clear: none; overflow: hidden; }
+ul.result li.secondary span.ar { direction: rtl; text-align: right; float: right; clear: none; overflow: hidden; }
+ul.result li.secondary span.ar .more_link { font-size: 0.7em; text-decoration: underline; }
+
+h3.searchterm { text-align: center; font-family: "CA BND Web Bold", Helvetica; font-size: 50px!important; }
+
+
+
+.bq { line-height: 0; font-size: 30px; }
+
+.end { display: none; }
+
+body.search #container { overflow: hidden; display: inline-block; text-align: left; margin-left: auto; margin-right: auto; width: 97em; max-width: 100%; clear: both; }
+body.search #container { display: block; }
+body.search #hide_highlight, body.search #show_highlight { color: #cbc7bd; font-weight: normal; }
+body.search #hide_highlight { display: none; }
+
+div.searchwrap { text-align: center; margin: 2em auto; background: url('/static/images/bg-striped.gif'); border: 1px solid #cbc7bd; -webkit-border-radius-bottomleft: 4px; -webkit-border-radius-topleft: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-topleft: 4px; -webkit-border-radius-topright: 4px; -webkit-border-radius-bottomright: 4px; -moz-border-radius-topright: 4px; -moz-border-radius-bottomright: 4px; }
+div.searchwrap input#search-field-full { color: #333333; margin: 5px; font-size: 1.5em; float: left; }
+div.searchwrap input#search-field-full.hint { color: #cbc7bd; }
+div.searchwrap #search_button { display: block; background: url('/static/images/tab_gradient.png') repeat-x; padding: 0; color: #cbc7bd; font-size: 0.9em; text-decoration: none; -webkit-border-radius-bottomleft: 4px; -webkit-border-radius-topleft: 4px; -moz-border-radius-bottomleft: 4px; -moz-border-radius-topleft: 4px; -webkit-border-radius-topright: 4px; -webkit-border-radius-bottomright: 4px; -moz-border-radius-topright: 4px; -moz-border-radius-bottomright: 4px; padding: 6px 5px; font-weight: bold; background: #f8f8f8; color: black; margin: 0.3em 0.3em 0.8em 0; float: left; }
+div.searchwrap #search_button:hover { text-decoration: underline; }
+div.searchwrap #search_button:hover { background: #4e9946; color: white; text-decoration: none!important; }
+div.searchwrap select { display: none; }

@@ -1,0 +1,80 @@
+
+// =========
+// = admin =
+// =========
+
+=admin_styles
+  +universal_two_column_layout
+  :font-size= !small
+  h1
+    :font-size= !small
+    :color= !red
+    :text-transform uppercase
+    +rounded
+    :float left
+    :padding 0 2px
+  h2
+    :clear both
+    :margin 0
+    :padding-top 1em
+  p
+    :clear both
+    :float left
+    :padding 0
+    :width 100%
+    :margin 0
+    :color= !med_grey
+    a
+      :color= !med_grey
+  p.event 
+    :border-bottom= 1px solid !med_grey
+    :color= !dark_grey
+    img
+      :float left
+      :border= 5px solid !med_grey
+      :margin 1em 1em 1em 0
+  em
+    :padding 0 2px
+    :float right
+  em.draft
+    +highlight
+  em.translation_pending
+    :background= !bright_blue
+  em.published
+    :background= !bright_green
+    :color #fff
+
+  div#container
+    #primary
+    #secondary
+      ul
+        li
+          :float left
+          :clear both
+          :border= 1px solid !med_grey
+          :background= !bright_blue
+          :color #fff
+          +columns(4,5)
+          
+          a
+            +hover-link
+            :padding .5em
+            :float left
+            :display block
+
+
+=admin_nav
+  :background #000
+  :width 100%
+  :float left
+  li
+    :float left
+    :padding-left 1em
+    :font-size= !small
+  li.label
+    :font-weight bold
+    a
+      :color #888
+  a
+    :color #fff
+    +hover-link

@@ -1,0 +1,51 @@
+
+=page_profile
+  +universal_two_column_layout
+  ul li:hover
+    a
+      :background-color= !med_grey
+  #sectionheader
+    +striped_background
+  .sidebar_box
+    :background #fff
+  ul#profile_list
+    li
+      :clear both
+  div#profile_summary
+    :margin 2em 0
+    :padding-top 1em
+    +striped_background
+    h4
+      :font-weight bold
+  #username
+    font-weight: bold
+    clear: both
+    margin: 10px 0px
+    font-size: 2em
+  #profile_summary form#photo_editor input
+  .sidebar_box a
+    background: #fff
+    padding: 2px 
+    &:hover
+      color: #000
+  #manage_subscriptions a.remove,  #profile_summary a.update
+    border: none
+    background: none
+    color: #f1f1f1
+    margin-left: 2px
+  #inbox
+    :border-top= "3px solid" !dark_grey
+    div.delete
+      :display none
+    .star
+      :width 30px
+      :margin 10px
+    .pic
+      img
+        :width 30px
+    .timestamp
+      :text-transform uppercase
+    .name
+      :font-weight bold
+    .checkbox
+      :display none

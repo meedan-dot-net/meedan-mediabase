@@ -1,0 +1,171 @@
+// ========================================================================================================================
+//  HOW TO IMPLEMENT THE SON OF SOCKEROONI MARKUP
+//   div.row
+//     div.row_ar, div.row_en
+//       div.column_ar, div.column_en
+//         fragment_links_list.tpl
+// ========================================================================================================================================================
+
+!meta_header_height = 80px
+
+//bidi backgrounds
+=ar_to_en_body
+  :background url("/static/images/ar_to_en_960_bkg.png") top right
+  :line-height 1.6
+=en_to_ar_body
+  :background url("/static/images/en_to_ar_960_bkg.png") top right
+
+
+=link_row_type
+  :font-weight bold
+  :text-decoration none
+  :vertical-align middle
+  .quote
+    :line-height 1.2
+  ul
+    :width 70%
+    :padding 0 10%
+    :float left
+
+=column_en_layout
+  :width 49%
+  :float left
+  :text-align left   
+  :overflow hidden
+
+=column_ar_layout
+  :width 40%
+  :padding 0
+  :float right
+  :padding-right 0.5em
+  :text-align right
+  :overflow-x hidden
+  +rtl
+
+=bidi_link_row(!from="ar", !to="en")
+  :clear both
+  :border-bottom= 1px solid !dark_grey
+  :width 100%
+  :float left
+  :padding-top 0.5em
+  :padding-bottom 1.7em 
+  +link_row_type
+  
+=bidi_link_type
+  h1
+    :text-align center
+    :background #fff
+    :margin-top 0
+    :border-bottom= 3px double !med_grey
+    :padding-top 1em
+    :margin-bottom 0
+    span.en span.ar
+      :font-size 15px
+
+=bidi_row_layout
+  div.row_en
+    +bidi_link_row("en","ar")
+    :background url("/static/images/en_to_ar_960_bkg.png") top right
+    div.column_en
+      +column_en_layout
+    div.meta
+      :background url("/static/images/en_to_ar_960.png") top right no-repeat 
+      div.translator, div.translator img 
+        :float right
+      div.translator
+        span.timestamp
+          :background #000
+          :font-size 12px
+      
+  div.row_ar
+    +bidi_link_row("ar","en")
+    :background url("/static/images/ar_to_en_960_bkg.png") top right
+    div.column_ar
+      +column_ar_layout
+    div.meta
+      :background url("/static/images/ar_to_en_960.png") top right no-repeat 
+      span.posted_by
+        :float right
+      div.translator
+        :float left
+        span.timestamp
+          :background #000
+          :font-size 12px
+          
+      div.translator img
+        :float left
+
+
+=comment_count_layout
+  :margin 1em 0
+  :padding 1em 0
+  :float left
+  :clear both
+  span.count
+    +rounded
+    :color= !green
+    :padding 5px
+    :clear both
+    :font-weight bold
+
+=link_page_layout
+  +container
+  :width 950px
+  :margin 3px auto
+  :background #fff
+
+// =======================
+// = OUTPUT
+// = called on body.link =
+// =======================
+
+
+
+=bidi_link_page
+  +striped_background
+  #container, #content
+    +link_page_layout
+  #primary
+    +full
+    div.row
+      +bidi_row_layout
+      div.meta
+        :height= !meta_header_height
+      div.column_en
+        +column_en_layout
+      div.column_ar
+        +column_ar_layout
+    
+    ul.link_root
+      li.quote
+        :min-height 80px
+        :overflow hidden
+      li.translation
+        :padding 1em 0
+        :width 100%
+        span.original, span.translation
+          :border= 1px solid !med_grey
+          :padding 0.5em
+          :margin 0.5em 0 
+          :font-size= !small
+          :font-weight normal
+        span.original
+          +left_rounded_corners
+        span.translation
+          +right_rounded_corners
+          :border-left-width 0
+          
+          
+          
+          
+      li.domain
+        span
+          :float left
+          :clear both
+          :width 99%
+        a.link_favicon 
+          img
+            :max-height 20px
+      li.event_comment_count
+        +comment_count_layout
+  

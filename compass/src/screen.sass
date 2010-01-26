@@ -1,51 +1,894 @@
-/*
-  Welcome to Susy. Use this file to define screen styles.
-  Import this file using the following HTML or equivalent:
-  <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
 
-/* @group reset */
-@import compass/reset.sass
-/* @end */
+//@includes
+@import base
+@import admin
+@import header
+@import footer
+@import profile
+@import event_detail
+@import search
+@import links
+@import page_profile
+@import layouts
+@import countries
+@import translations
+@import sidebar
 
-/* @group defaults */
-@import base.sass
-/* @end */
+// ===================
+// = basic utilities =
+// ===================
 
+img.sml-user-img
+  :width 40px
 
-/* @group STRUCTURE */
+a
+  +link-colors(!dark_grey, !normal_blue, !dark_grey, !dark_grey, !dark_grey)
+.hidden
+  :display none
+.visible
+  :display block
+.notice
+  +notice
+  a
+    +link-colors(!bright_blue)
+    :text-decoration underline
 
+// =========
+// = @temp =
+// =========
+ul.favilist 
+  :list-style none
 
-
-/* @end */
-
+.highlight
+  +highlight
+  +rounded
   
-/* @group COMPONENTS by type */
+.error-message
+  +error
+  
+// ========
+// = type =
+// ========
 
+a img 
+  :border none
 
+.ar
+  :font-size= !big
 
-/* @end */
+ul
+  +no-bullets
+  :margin 0
+  :padding 0
 
+h1 
+  :font-size 1.4em
+  :font-weight bold
 
-/* @group OVERRIDES by content */
+h3
+  :font-size 1.1em!important
+  :font-weight bold
 
+h4
+  :padding 5px 0 0 0
+  :font-weight bold
+  :clear both
 
+// =============
+// = grid type =
+// =============
 
-/* @end */
+=event_grid_type
+  :font-size !small
+  a.event-title
+    :padding 5px
+    :line-height 1.1em
+    :display block
+    :text-decoration none
 
+// ===============
+// = grid layout =
+// ===============
+
+=box
+  :overflow hidden
+  :height= !event_box_height
+  :position relative
+  :clear none
+  :float left
+  :width 150px
+  :margin 2px
+
+=event_grid_layout
+  +event_grid_type
+  div#events_wrap
+    div.event_wrap
+      :background #fff
+      div.event
+        +box
+        +border
+        :background #fff!important
+        span.meta
+          :width 100%
+          :background #222
+          :float left
+          :padding 2px
+          :display none
+          a
+            :font-size= !small
+            :text-decoration none
+            :text-transform uppercase
+            :color #ccc
+            :text-decoration none
+            :clear both
+            :float left
+            :line-height 1
+            :display inline
+
+        span.event-counts
+          :position absolute
+          :bottom 0em
+          :height 2.55em
+          :width 100%
+          :line-height 1em
+          :padding 0.5em 0 0 0.5em
+          :font-size= !small
+          +italic
+          :z-index 100
+          :background= !light_grey
+          
+        p.event-description
+          :display none
+          :font-size= !small
+          :line-height 2em
+          :margin 5px 0 0 0
+          
+        // ===========================================================
+        // = the scaled image in the event ... looks horrible on IE6 =
+        // ===========================================================
         
-/* @group OVERRIDES by page */
+        img
+          :width 100%
+          :border none
+          :-ms-interpolation-mode bicubic
+          
+          // =========================================
+          // = attribution is turned off temporarily =
+          // =========================================
+          
+        .attribution
+          :display none 
+          :font-size= !small
+          +italic
+          :margin 0 5px
 
+// =====================
+// = event list layout =
+// =====================
 
+=event_list_layout
+  +universal_two_column_layout
+  div#events_wrap
+    :margin-top 40px
+  div.event_wrap
+    +columns(16,16)
+    :border-top 1px solid #333
+    :float left
+    :padding 1em 0
+    a.event-title
+      +columns(12,16)
+      :float right
+      :padding 0
+    div.event
+      a
+        +link-colors(!dark_grey, !normal_blue, !dark_grey, !dark_grey, !dark_grey)
+        :font-size 1.2em
+        :text-decoration none
+      &:hover
+        :color= !bright_blue
+      span.event-counts
+        :float left
+        :color #c3c3c3
+        +columns(3,16)
 
-/* @end */
+    img, .attribution, span.meta, p.event-description
+      :display none
 
+!_row_height = 2em
 
-/* @group DEBUG */
+// =======================
+// = basic search layout =
+// =======================
 
-/*   uncomment, adjust and use for debugging    */
+=searchbox
+  :margin 0
+  +columns(5,10)
+  :float right
+  +rounded
+  :font-size 1em
+  :vertical-align middle
+  input.search-field-full
+    +columns(3,5)
+    :float left
+    :color= !dark_grey
+    +opacity(70)
+    :font-size 1.5em
+    :margin 10px
+  input.search-field-full.hint
+    :color= !med_grey
+  span.search_button
+    :margin-top 16px
+    
+=language_toggle
+  +columns(3,10)
+  :float right
+  :font-size= !small
+  :padding 2px
+  :border= 1px solid !med_grey
+  +rounded
+  li 
+    :float left
+  li.inactive
+    :background none
+    :padding 0 5px
+    :float right
+  li.active
+    +left_rounded_corners
+    :font-weight bold
+    :padding 0 1em
+    :background-color= #888
+    :color #fff
+  li.active a, li.inactive a, a#logout
+    +hover-link   
+  a.ar, li.active span.ar
+    :top -2px!important
+    :position relative  
+    :text-decoration none
+// =========================================================
+// = register, login, search, language tools in the header =
+// =========================================================
+div#tools
+  :margin 1em 0
+  +columns(10,24)
+  :float right
+  :min-width 500px
+  div.searchwrap
+    +searchbox
+  ul#language_toggle
+    +language_toggle
+    
+  ul#header_admin_menu
+    :float right
+    :margin 0 5px
+    li
+      :float right
+  a
+    :font-weight normal
+    :height= !nav_height
+    :outline none
+    :-moz-outline-style none
+  a#open, a#close, a.register, a#logout, a.register, a#help
+    :padding 5px
+    +rounded
+    +hover-link
+    +link-colors(!bright_blue)
+    :text-transform uppercase
+    +link-colors(!bright_blue)
+    :font-weight bold
+    :font-size= !small
+    :background #fff
   
-/*
-  #page
-    +show-grid("grid.png")
+span.alert
+  :background-image url("/static/images/icon_sprite.png")
 
-/* @end */
+// ================
+// = static pages =
+// ================
+body.static
+  +universal_two_column_layout
+  #content
+    #primary
+    ul
+      :list-style-position inside
+      li 
+        :list-style-type disc
+        :list-style-position inside
+
+// ================
+// = translations =
+// ================
+
+#translations
+  :border-top= "3px solid" !darkest_blue
+  :padding-top 10px
+
+div.translation_admin h3 
+  +italic
+
+// ===============
+// = @pagination =
+// ===============
+
+=wide_pagination_layout
+  +columns(12,24)
+  :clear both
+  :margin 1em auto
+  +pad(6,6)
+  :padding-top 1em
+  :padding-bottom 1em
+  +full
+  :font-size 2em
+  :text-align center
+  a
+    :padding 0 10px
+    
+=narrow_pagination_layout
+  +columns(1,24)
+  :position fixed
+  :bottom 3.5em
+  :right 0
+  :margin 15px 0
+  :z-index 999
+  !pagination_bkg_color= !base_mid
+  a
+    :float right
+    :display block
+    :padding 0.5em 0
+    :width 100%
+  a.current-page
+    +left_rounded_corners
+    :padding-left 5px
+    
+div.pagination 
+  !pagination_bkg_color= !base_mid
+  +wide_pagination_layout
+  +striped_background
+  div.pages-hidden
+    :display none
+  a
+    :text-align center
+    :text-decoration none
+    :border-right none
+  a:hover
+    :background #fff
+  a.page-number
+  a.current-page
+    :background= !pagination_bkg_color - #333
+    +dropshadow_light
+    :color #fff
+    +rounded
+
+body.home
+  div.pagination
+    :background none
+
+// =====================
+// = sitewide defaults =
+// =====================
+  
+body
+  +susy
+  :font-family "Helvetica Neue", Helvetica, Arial, sans-serif
+  :color= !font_color
+  :padding 0
+  :margin 0
+  :font-size !base_font_size_px
+  :line-height !base_line_height_px
+
+h1
+  :font-weight normal
+  :text-transform uppercase
+  :padding-bottom 1em
+
+// ===================
+// = homepage output =
+// ===================    
+
+body.home
+  +universal_two_column_layout
+body.grid
+  +event_grid_layout
+body.list
+  +event_list_layout
+body.my_meedan
+  +universal_two_column_layout
+body.translate
+  +universal_two_column_layout
+a.banner_link
+  :font-size 15px
+  :text-transform uppercase
+  :display block
+  :width 90%
+  :clear both
+  +success
+  :margin-top 1em
+
+// ============
+// = homepage =
+// ============
+
+body.home
+  div#primary
+    div#welcome
+      :font-size 2em
+      :line-height 1.1
+      :padding 0
+      p
+        a.lead_in
+          :font-size 0.6em
+          :text-transform uppercase
+          :font-weight bold
+          :background #fff
+          :padding 0 1em
+          :border= 1px solid !med_grey
+
+    div.event_wrap
+      div.event        
+        a.event-counts
+          :background #f8f8f8
+        
+  div#secondary
+    :font-size 1.2em
+    :text-align center
+    :background #fff
+    #translate_content
+      :padding 12px 0
+      blockquote
+        :width 90%
+        +reset-box-model
+        :text-align left
+        :padding-left 10%
+    h4
+      :text-decoration none
+      :margin 1em 0
+      :text-transform uppercase
+      :font-size 16px
+      :line-height 1.2em
+      :border-bottom= 3px double !med_grey
+      :width 100%
+    div.machine_translation
+      :clear both
+      :float left
+      h4
+        :clear both
+        :float left
+    div.translators
+      :border-right= 1px solid !med_grey
+    div.translators, div.countries
+      +columns(2,4)
+      :margin 0
+    div.countries
+      div.translators li a, 
+      div.sources li a, 
+      div.countries li a
+        :clear both
+        +hover-link
+    .show_all, .learn_more
+      +chunkybacon()
+      :color= !med_grey
+      :clear both
+      :border= !med_grey 1px solid 
+      +dropshadow_light
+      :padding-top 2px
+      +rounded
+    p
+      :min-width 215px
+    div.partners
+      :text-align center
+      a
+        img
+          +border
+          +rounded
+          :padding 1em
+          +dropshadow_light
+          :margin-top 1em
+      a:hover img
+        +dropshadow_dark
+    div.countries h2, div.translators h2
+      :margin-bottom 0
+    div.countries h4, div.translators h4
+      :border-bottom-width 0
+      :margin-top 0
+  
+
+// ==================
+// = homepage footer =
+// ==================
+
+.home
+  #footer
+    +big_footer_layout
+    +striped_background
+
+// ==========
+// = footer =
+// ==========
+
+#footer
+  //default to small footer
+  +small_footer_layout
+  :text-align left
+  :clear both
+  div.feature
+    :color= !base_dark
+  div.copyright
+    :color= !base_dark
+    :text-align center
+    :font-size= !med_grey
+    +italic
+    :clear both
+    :background= !darkest_blue
+    :padding-bottom 10px
+    img
+      :padding 0 5px
+    
+div#colorbar
+  +colorbar
+  
+#headerwrap
+  +main_navigation_layout
+  +main_navigation_colors
+
+ul#subnav
+  +subnav
+  
+#breadcrumb
+  :width 100%
+  :float left
+  :text-align left
+  :margin-top 1em
+  :text-transform uppercase
+  :color= !med_grey
+  :font-size= !small
+ul#stylesheet_toggle
+  :float right
+  :padding 5px
+  :margin 0 20px
+  a
+    :color #333
+    :font-size 12px
+    :text-decoration none
+    :padding 5px
+  &:hover
+    :color #333
+
+body.grid ul#stylesheet_toggle #grid,
+body.list ul#stylesheet_toggle #list,
+body.mason ul#stylesheet_toggle #mason
+  :background-color #c3c3c3
+  :color #fff
+
+// =============
+// = messaging =
+// =============
+=messaging_row
+  :padding 10px 0
+  :width 100%
+  :float left
+  :clear both
+  :border-top= 1px solid !med_grey
+  div
+    :float left
+    :display inline
+  p
+    :float left
+    :clear both
+  div.name, div.checkbox
+    :float right
+    a
+      +hover-link
+    
+
+body.messaging
+  +universal_two_column_layout
+  div#primary    
+    div.meta
+      :width 100%
+    h1
+      :font-size 3em
+      :text-align center
+      :width 100%
+  
+    h3
+      :float left
+      :text-align left
+    div.unread
+    div#inbox
+      img.sml-user-img
+        :width 30px
+        :border= 1px solid !med_grey
+      h1
+        span.en
+        span.ar
+          :letter-spacing 10px
+    a.plain
+    form#inboxform
+    div.unread
+    div.delete
+      :float right
+      :color= !med_grey
+      :border= 1px solid !med_grey
+      :text-transform uppercase
+      :font-size= !small
+      
+      a
+        :margin 1em
+      div.old, div.none, div.delete
+        :float left
+        :line-height 2em
+
+    div.highlighted
+      :background-color #fff
+      +messaging_row
+    div.lowlighted
+      :background-color= !light_grey
+      +messaging_row
+    div.sent
+      :clear both
+  #secondary
+    label
+      :text-align left
+      :whitespace wrap
+    #compose_form_area
+      //forgive me
+      +columns(3.5,4) 
+      :padding 1em
+      fieldset
+        :border none
+      form#composeform
+        :background= !light_grey
+        :padding 0.1em
+        +striped_background
+        :border= 4px double !med_grey
+        h4
+          :padding 1em 0
+          :margin 0
+        label
+          :float left
+          :clear left
+          :width 20%
+        input, textarea
+          :float right
+          :width 60%
+          +reset-box-model
+          :border= 3px double !med_grey
+
+        input.button
+          :width 100px
+          :clear both
+        
+  div#submit
+    :float right
+    :margin 10px
+
+  #nameSuggestIndicator
+    +suggest_box
+
+// ===========
+// = profile =
+// ===========
+
+body.profile
+  +page_profile
+
+// =========
+// = login =
+// =========
+body.login
+  div.content
+    +container
+    +columns(15,24)
+    +pad(5,5)
+    :padding-bottom 100px
+    +striped_background
+  div#primary
+    :background #fff
+    +rounded(15)
+    +columns(10,15)
+    +pad(3,3,15)
+    :text-align center
+    :float left 
+    :clear both
+    :margin-top 30px!important
+    :padding-top 30px
+    :border= 10px solid !med_grey
+    .button, .button
+      +chunkybacon(!green, !green)
+      :color #fff
+    .error-message, .error
+      +error
+      :margin-top 1em
+    .notice
+      +notice
+      :margin 1em
+
+    .label
+      :padding 0 1em
+      +columns(4,10)
+      :float left
+      :text-align right
+    h3
+      :float left 
+      :clear both
+      :display block
+  
+  div#openid
+    :display none
+    +striped_background
+    :padding 20px
+    +notice
+    input.button
+      :color #fff
+      :font-size= !normal
+      :text-align center
+      :margin 10px
+
+// ================
+// = registration =
+// ================
+
+!register_primary_width= 10
+!register_half_primary_width= !register_primary_width / 2
+
+=register_form_type
+  :text-align left
+  :font-size= !big
+  input
+    :font-size= !big
+    
+body.register
+  +register_form_type
+  #logo
+    :position absolute
+    :right 100px
+    :top 30px
+  #primary
+    +columns(!register_primary_width,!register_primary_width)
+    +pad(1,1)
+    :clear none
+    :padding-bottom 10em
+    div
+      +columns(!register_half_primary_width,!register_primary_width)
+      :clear both
+    div.error
+      +error
+      :padding-left 0
+      :padding-right 0
+      :border-left-width 0
+      :border-right-width 0
+      :text-align center
+      +columns(!register_half_primary_width,!register_half_primary_width)
+      +full
+  .error-input
+  .notice
+    +italic
+    +columns(!register_half_primary_width,!register_half_primary_width)
+  input
+    +columns(!register_half_primary_width,!register_half_primary_width)
+    +full
+  p
+    +columns(!register_half_primary_width,!register_half_primary_width)
+    :margin-bottom 3px
+  .submit
+    :width 5em
+    :float right
+    :margin 1em 0
+    
+#progress
+  :position relative
+  :top 0
+  :right 0
+  :display none
+  
+
+// ====================================================
+// = homepage actions, previously fixed on the bottom =
+// ===================================================="
+
+#sub_actions
+  :width 100%
+  :z-index 200
+  :color= !bright_blue
+  :line-height= 2em
+  ul li
+    :float right
+    :height= !nav_height
+    :padding 0 0 0 20px
+    a
+      +hover-link
+    a.ar
+      :padding 0 10px
+      //typical designerly kludge
+      :top -5px!important
+      :position relative  
+      :text-decoration none
+
+// ================
+// = hidden panel =
+// ================
+
+#toppanel
+  :position relative
+  :width 100%
+  :z-index 200
+  :text-align center
+  :margin-left auto
+  :margin-right auto
+  :background= !darkest_blue
+  +opacity(98)
+
+#login
+  :position absolute
+  :z-index 99
+  :overflow hidden
+  +opacity(100)
+  :color #fff
+  :top = !nav_height * 3
+  :right 70px
+  :width 300px
+  :float right
+  :border-bottom 2px solid #333
+  +striped_background
+  :padding-bottom 0.5em
+  +dropshadow_dark
+  :display none
+  #first
+    :float right
+    +columns(5,5)
+    input.button
+      +chunkybacon(!green, !green)
+      :color #fff
+
+
+// =========
+// = links =
+// =========
+// see links.sass
+
+body.links
+  +bidi_link_page
+  +bidi_link_type
+  
+
+// ========
+// = misc =
+// ========
+
+#nameSuggestResults
+  :background #fff
+  //why does this cursor not work? CGB
+  a:hover
+    :cursor pointer
+
+ul#admin_nav
+  +admin_nav
+
+body.admin
+  +admin_styles
+
+body.fixtrans
+  +universal_two_column_layout
+  
+#countries_toggle
+  +rounded(7)
+  +striped_background
+  :border-top= 1px solid !grey
+  :border-bottom= 1px solid !grey
+  :float right
+  :text-transform uppercase
+  :width 100%
+  :font-size= !small
+
+body.translate
+  h1
+    span.en, span.ar
+
+div.bidi_header
+  :text-align center
+
+// =============
+// = countries =
+// =============
+  body.countries
+    +countries_two_column_layout
+    div#container

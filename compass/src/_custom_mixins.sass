@@ -1,0 +1,356 @@
+=debug
+  #primary
+    :background-color red
+  #secondary
+    :background-color green!important
+
+=feature_button
+  :font-size 0.7em
+  :background= !light_grey
+  :width 70px
+  :float left
+  :padding 10px
+  :margin-left 10px
+
+=shadowlinks
+  :background #fff
+  :text-decoration none
+  +dropshadow_light
+  &:hover
+    :background= !base_mid
+    :color= !base_lightest
+
+=rainbow
+  :background url('/static/images/rainbow.jpg') bottom right
+
+=striped_background
+  :background url('/static/images/bg-striped.gif')
+
+=gradient
+  :background url('/static/images/tab_gradient.png') repeat-x
+  
+=gradient_anchors
+  a
+    +gradient
+    :font-size 0.9em
+    :width 100%
+    :display block
+    :text-decoration none
+    &:hover
+      :background #fff
+  img
+    :margin 0 auto
+    :width 180px
+
+=italic
+  :font-family palatino, baskerville, georgia, "helvetica neue", helvetica
+  :font-style italic
+
+=border
+  :border 1px solid #c3c3c3
+  
+=tiled_bkg
+  :background url('/static/images/tiling_flat_grey.png')
+
+=dropshadow_light
+  :-moz-box-shadow 0px 5px 5px -3px #c3c3c3 
+
+=dropshadow_dark
+  :-moz-box-shadow 0px 20px 30px 0px #c3c3c3
+]
+
+=top_rounded(!radius = 4px)
+  -webkit-border-radius-topleft= !radius
+  -webkit-border-radius-topright= !radius
+  -moz-border-radius-topright= !radius
+  -moz-border-radius-topleft= !radius
+
+
+=left_rounded_corners(!radius = 4px)
+  -webkit-border-radius-bottomleft= !radius
+  -webkit-border-radius-topleft= !radius
+  -moz-border-radius-bottomleft= !radius
+  -moz-border-radius-topleft= !radius
+
+=right_rounded_corners(!radius = 4px)
+  -webkit-border-radius-topright= !radius
+  -webkit-border-radius-bottomright= !radius
+  -moz-border-radius-topright= !radius
+  -moz-border-radius-bottomright= !radius
+
+=rounded(!radius=4px)
+  +left_rounded_corners(!radius)
+  +right_rounded_corners(!radius)
+
+  
+=circle(!size=10, !bkg=red)
+  +rounded(!size+"px")
+  :background-color= !bkg
+  :display block
+  :height= !size + "px"
+  :width= !size + "px"
+  :position absolute
+  :top 10
+  :left 10
+
+a#circle
+  +circle
+a#circle:hover
+  +circle(10, blue)
+  :width 100
+
+
+=opacity(!opacity, !hover_opacity = false)
+  :opacity= !opacity / 100
+  :-moz-opacity= !opacity / 100
+  :-ms-filter= "progid:DXImageTransform.Microsoft.Alpha(Opacity=#!opacity)"
+  :filter= "alpha(opacity=#!opacity)"
+  @if !hover_opacity
+    +opacity-hover(!hover_opacity)
+
+=opacity-hover(!opacity)
+  &:hover
+    +opacity(!opacity)
+
+=button
+  +border
+  +gradient_anchors
+  +rounded
+
+=suggest_box
+  :display block
+  ul.suggestResults
+    :border= "5px solid" !dark_grey
+    +opacity(90)
+    :display block
+    z-index: 3
+    position: absolute
+    max-height: 150px
+    white-space: nowrap
+    :left 100px
+    li
+      :padding 5px 10px
+      :background-color #fff
+      :cursor pointer!important
+      :cursor hand!important
+      :border-top= "1px solid" !dark_grey
+
+=alt_header
+  :text-transform uppercase
+  :font-weight bold
+  :color= !green
+  :letter-spacing -0.8px
+
+=pill
+  +rounded
+  :background= !base_mid
+  :padding 0 0.2em
+  :color #fff
+
+=rtl
+  :direction rtl
+  :text-align right
+  
+=chunkybacon(!yes = !green, !please_and= !light_grey)
+  +hover-link
+  +rounded(4px)
+  :padding 6px 5px
+  :font-weight bold
+  :background = !please_and
+  :color= !please_and - !light_grey
+  &:hover
+    :background= !yes
+    :color= !yes + !light_grey
+    :text-decoration none!important
+
+=bacon_lite
+  :padding 0 5px
+  :line-height 1.2em
+
+=image_header(!image= "icon_info.png")
+  :padding 0.5em 1em 1em 4em
+  :background= url("/static/images/#{!image}") no-repeat top left
+
+=superglue(!x="right", !y="top", !margin="5px")
+  :position absolute
+  :margin= !margin
+  @if !y == "top"
+    :top 0
+  @if !y == "bottom"
+    :bottom 0
+  @if !x == "right"
+    :right 0
+  @if !x == "left"
+    :left 0  
+
+=red
+  :background-color red
+
+=green
+  :background-color green
+
+=blue
+  :background-color blue
+
+=pink
+  :background-color pink
+
+// ===============
+// = bidi layout =
+// ===============
+!full= 24
+!bidi_full= 24
+!bidi_half= 11
+!bidi_gutter= 0
+
+=bidi_link_list_type
+  .primary
+    :font-size 1.2em
+    span.en
+      :line-height 1.9
+      :text-align left
+    span.ar
+      :line-height 0.9
+      +rtl
+  .secondary
+    :font-size 1.1em
+
+=bidi_list
+  +bidi_link_list_type
+  li.primary
+    :padding-top 1em
+    :padding-bottom 1em
+    +columns(!bidi_full,!bidi_full)
+    :background #fff
+    span.quote, span.title
+      +columns(!bidi_half,!bidi_full)
+    span.en
+      :text-align left
+      :float left
+    span.ar
+      :float right
+      :margin-right 0
+      .more_link
+        :font-size 0.8em
+        :text-decoration underline
+  li.secondary
+    +columns(!bidi_full,!bidi_full)
+    :clear both
+    +striped_background
+    span
+      :padding 0 1em
+      :line-height 2em
+      :float left
+      a.user_image img 
+        :display none
+      img
+        :margin 5px
+        :float left
+        :height 20px
+    span.timestamp
+      :color #000
+    span.en
+      :text-align left
+      :float left
+      :clear none
+      :overflow hidden
+    span.ar
+      +rtl
+      :float right
+      :clear none
+      :overflow hidden
+      .more_link
+        :font-size 0.7em
+        :text-decoration underline
+
+=bidi_header
+  :padding 1em 0
+  :font-size 2.1em
+  :line-height 1
+  :width 100%
+  +omega
+  :margin-right 0
+  :clear both
+  :float left
+  .amp
+    +italic
+    :font-family palatino, baskerville, garamond, georgia, serif
+  h1
+    :font-size 30px
+    :line-height 1.2
+    :padding 0 1em
+  h1.en
+    :float left
+    :text-align left
+  h1.ar
+    :text-align right
+    +rtl
+    :float right
+    :margin-right 0
+    :line-height 1.25
+
+/* implement tabs with 
+this jquery: $(".ui-tabs").tabs({ cookie: { expires: 30 } });
+and this markup: 
+
+<div class="ui-tabs">
+  <ul class="ui-tabs-nav">
+  ...
+  </ul>
+</div>
+*/
+
+=tabs
+  :clear both
+  :margin-top 1em
+  :display block
+  :float left
+  +columns(!bidi_full,!bidi_full)
+  +clearfix
+  +bidi_list
+    
+  .ui-tabs-hide
+    :display none
+
+  .ui-tabs-nav
+    +striped_background
+    +columns(!bidi_full,!bidi_full)
+    :padding-top 1em
+    :border-bottom= 1px solid !dark_grey
+    :margin 0 auto
+    :padding-left 32%
+
+  .ui-tabs-nav li.ui-state-default a
+    :color= #888
+
+  .ui-tabs-nav li.ui-tabs-selected a
+    :background= #fff
+    :top 1px
+    :position relative
+    :color #000
+    :border-top= 1px solid !dark_grey
+    :border-right= 1px solid !dark_grey
+    :border-left= 1px solid !dark_grey
+    +top_rounded(7px)
+
+  .ui-tabs-nav li a
+    :padding 5px
+    :float left 
+    :display block
+    :clear both
+    :margin-left 1em
+    :color= !dark_grey
+
+  .ui-tabs-nav li
+    :float left
+    :text-align center
+
+=notice
+  :background= !light_yellow none repeat scroll 0 0
+  :border= 2px solid !dark_yellow
+  :color #514721
+  :float left
+  :margin-bottom 1em
+  :padding 0.8em
+  :width 90%
+  

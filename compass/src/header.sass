@@ -1,0 +1,119 @@
+=colorbar
+  +rainbow
+  +columns(24,24)
+  +full
+  :height 0.25em
+  :padding 0 
+  :margin 0
+  :position absolute
+  :z-index 100
+
+=main_navigation_layout
+  :height= !nav_height * 3
+  :min-width= !content_min_width
+  :clear both
+  div#header
+    :height= !nav_height * 3
+    :margin 0 auto
+    ul#nav
+      :height= !nav_height * 3
+      :list-style-type none
+      :float left
+      :position relative
+      :z-index 2
+      :display block
+      :min-width 440px
+      li 
+        :float left
+        :width 110px
+        a.button
+          :text-decoration none
+          :height= !nav_height
+          :padding-top= !nav_height * 2
+          :text-transform uppercase 
+          :text-decoration none
+
+=subnav
+  :border-top= 2px solid !darkest_blue
+  :list-style-type none
+  :margin 0
+  :clear both
+  :float left
+  +striped_background
+  :width 100%
+  +columns(24)
+  li
+    :display inline
+    :border-bottom-width 0
+    :font-size= !small
+  li a 
+    :float left
+    +chunkybacon(!red,!light_grey)
+    :border= 1px solid !med_grey
+    :margin 5px 10px
+    :padding 0 0.5em!important
+    +dropshadow_light
+  li a.selected-tab
+    +chunkybacon(!light_grey, !dark_grey)
+    :color #fff
+    &:hover
+      :color #000
+      
+      
+// ==================
+// = THAR BE COLORS =
+// ==================
+
+=active_link
+  +striped_background
+  +opacity(100)
+  :background url('/static/images/arrow_up.png') bottom center no-repeat
+  
+  a
+  :color= !base_darkest!important
+  :font-weight bold
+  :border-bottom= !dark_blue 2px solid 
+  +dropshadow_light
+
+=main_navigation_colors
+  :border-bottom= 1px solid !base_mid
+  div#header
+    :background-color= !light_grey
+    :border-top 3px solid #000
+    :border-bottom= 1px solid !med_grey
+  ul#nav
+    +main_navigation_layout
+    li
+      :border-right= 1px solid !base_mid
+      :border-bottom none
+    li a
+      :color= !base_dark
+      :display block
+    li a:hover
+      :color #000!important
+      :text-decoration none!important
+      :background-color= !base_dark
+      +opacity(100)
+    li.translations a
+      :background url('/static/images/comment_trans.png') 50% 25% no-repeat
+    li.home a
+      :background url('/static/images/icons/icon_grey_news.png') 50% 15% no-repeat
+    li.countries a
+      :background url('/static/images/icons/icon_grey_help.png') 50% 15% no-repeat
+    li.search a
+      :background url('/static/images/icons/icon_search_doc.png') 50% 15% no-repeat
+    li.people a
+      :background url('/static/images/icons/icon_grey_question.png') 50% 15% no-repeat
+    li.mail a
+      :background url('/static/images/icons/icon_mail.png') 50% 15% no-repeat
+      
+    li.links a
+      :background url('/static/images/link.png') 50% 25% no-repeat
+    li a:hover
+      +opacity(100)
+    li.active
+      +active_link
+
+
+a.rss_feed
+  :float right

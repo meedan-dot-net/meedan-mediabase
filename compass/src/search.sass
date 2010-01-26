@@ -1,0 +1,102 @@
+@import base
+@import custom_mixins
+@import static_colors
+
+a
+  +hover-link
+  :color #333
+  
+body.search
+  #primary
+    +container
+
+// =================
+// = result labels =
+// =================
+
+span.event
+  :background= !green_highlight
+  :color= !green_highlight - #999
+span.comment
+  :background= !orange_highlight
+  :color= !orange_highlight - #666
+span.link
+  :background= !blue_highlight
+  :color= !blue_highlight - #999
+
+ul.event
+  :border-top= 1px solid !green_highlight - #666
+ul.comment
+  :border-top= 1px solid !orange_highlight - #666
+ul.link
+  :border-top= 1px solid !blue_highlight - #666
+
+// ====================
+// = bidi header =
+// ====================
+h3
+  :clear both
+  :float left
+  :width 100%
+  :text-align center
+        
+// =================
+// = result layout =
+// =================    
+ul.result
+  +columns(!bidi_full,!bidi_full)
+  +clearfix
+  +bidi_list
+
+h3.searchterm
+  :text-align center
+  +specialfont
+  :font-size 50px!important
+
+li.primary
+li.secondary
+
+// ===============
+// = blockquotes =
+// ===============
+.bq
+  :line-height 0
+  :font-size 30px
+.end
+  :display none
+
+body.search
+  #container
+    +container
+    :clear both
+  #hide_highlight, #show_highlight
+    :color= !med_grey
+    :font-weight normal
+  #hide_highlight
+    :display none    
+
+div.searchwrap
+  :text-align center
+  :margin 2em auto
+  +striped_background
+  :border= 1px solid !med_grey
+  +rounded
+  
+  input#search-field-full
+    :color= !dark_grey
+    :margin 5px
+    :font-size 1.5em
+    :float left
+  input#search-field-full.hint
+    :color= !med_grey
+  #search_button
+    :display block
+    +gradient
+    :padding 0
+    :color= !med_grey
+    :font-size 0.9em
+    +chunkybacon
+    :margin 0.3em 0.3em 0.8em 0
+    :float left
+  select 
+    :display none

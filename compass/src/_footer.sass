@@ -1,0 +1,36 @@
+// ==========
+// = footer =
+// ==========
+
+=big_footer_layout
+  :height= !big_footer_height
+  :width 100%
+  #centering
+    :margin 0 auto
+    :width 90%
+    p
+      :padding 0
+    ul li
+      :margin 0 0 10px 0
+      :line-height 1.5em
+      :padding 2px 0
+      a
+        +hover-link
+        +chunkybacon
+        :padding 0 
+    div.feature
+      :height= !big_footer_height
+      :overflow hidden
+      +columns(7,25)
+    div.links
+      +columns(3,25)  
+  div.copyright
+    :padding-top 20px
+
+=small_footer_layout
+  :padding-top 30px
+  :width 100%
+  
+  div.copyright
+    :padding-top 20px
+    :height= 100px
