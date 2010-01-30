@@ -1,3 +1,6 @@
+
+jQuery(document).ready(function() {
+  
   $ = jQuery
 
   // =====================
@@ -21,7 +24,7 @@
     $(this).qtip( {
        content: '<em>There is no Mediabase entry on this source.</p> <a href="http://freebase.com">Create a Mediabase Page in Arabic or Engligh</a>.',
        position: 'topRight',
-       hide: { fixed: true},
+       hide: { fixed: true },
        style: { padding: '5px 15px'}
     });
   });
@@ -31,4 +34,10 @@
   // = editor bar =
   // ==============
   
-  $('#container').prepend('<form id="editor_bar"><span>Name:<input></input></span>  <span>Language:<input></input></span>  <span>Owner:<input></input></span> </form>');
+  $('#container').prepend('<div id="editor_bar"><form><span>Name:<input></input></span>  <span>Language:<input></input></span>  <span>Owner:<input></input></span></form><a id="trigger">&nbsp;</a></div>');
+  
+  $('a#trigger').click(function() {
+    $('#editor_bar form').slideToggle('slow');
+  });
+
+});

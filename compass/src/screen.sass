@@ -887,6 +887,26 @@ div.bidi_header
 // =============
 // = countries =
 // =============
-  body.countries
-    +countries_two_column_layout
-    div#container
+!bar_height = 42px
+
+
+div#editor_bar
+  :position fixed
+  :bottom 0
+  :right 0
+  :width 100%
+  :background transparent
+  form
+    :display none
+    :background #fff
+    :border-top 2px solid #000
+    :float left
+    :height= !bar_height
+  a#trigger
+    :background transparent url("/static/images/freebase_icon_2_color.gif") no-repeat
+    :width 47px
+    :height= !bar_height
+    :float right
+    :display block
+    :line-height 0
+  
