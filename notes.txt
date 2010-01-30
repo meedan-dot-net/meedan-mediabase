@@ -1,0 +1,75 @@
+mark grieves vulcan investment -- mediawiki overlays
+building inference systems that can solve SAT-style questions about
+mark could be a supporter of the crisiswiki
+
+using freebase as a discovery tool. 
+taking their content and making the association between
+it's not a taxonomy at all, it's just a collection of nodes that you can query. 
+
+can a relationship have a weight? No but you can have a notable type/ .
+
+bloggers
+we want to knwo what the people 
+
+we can play out the indexing game against a very large corpus of people
+
+
+jamie has a drupal extension -- a prototype of a really useful
+RDFa is too hard 
+HTML5 microdata, the simplicity 
+it is controversial if you are a really hardcore RDFa hed
+RDFa (was) beautiful
+Commontag RDF is nothing more than an abstract model. 
+The expressions of RDF are where the work lies, CommonTag is just one expression of it.
+building a model for large scale annotation in freebase. 
+Tags are corrected to resources, and there is an annotation about why that connection was made. 
+
+in a transitionary periond.
+
+
+MQL extensions now allows you to specify virtual properties that query services that are not a part of Freebase. The query embeds the 
+
+- you can query daylife with a freebase identifiers. 
+- query people's ids and get related items
+- some sources are painfully performant
+- the interesting part is that you can embed logic in the 
+
+
+
+
+MJT
+dynamically built templates on the client side
+the problem is SEO. 
+Acre: Arbitrary javascript. 
+
+
+Zemanta is much more 
+
+Calais is of dubious quality. 
+
+get the full list back from Zemanta
+
+What about Arabic? 
+At some point we will have to translate. 
+Freebase is actually multilingual -- we should add entries
+
+Arabic entity extractors anyone.
+
+wordnet.freebase.com
+browse the graphs of sense relationships in freebase
+stanford NLP looking for ways to use the network to expand wordnet
+
+Ellerdale does new extraction
+lingusitic data march 21st
+
+base
+type
+object
+property
+
+cotyping
+
+
+create a new type and then decorate it with the types that you need
+
+chris will take ownership
