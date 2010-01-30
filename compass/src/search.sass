@@ -101,14 +101,22 @@ div.searchwrap
   select 
     :display none
 
+
+=mediabase
+  .mediabase_domain
+    +highlight
+    +rounded
+    em
+      :font-weight bold
+      :font-style normal
+      :text-transform uppercase
+  form#editor_bar
+    :width 100%
+    :background #888
+    :color= !light_grey
+    :padding 1em
+
 body.search 
   span.quote, span.title
     :padding 0 1em!important
-
-.mediabase_domain
-  +highlight
-  +rounded
-  em
-    :font-weight bold
-    :font-style normal
-    :text-transform uppercase
+  +mediabase
